@@ -24,16 +24,17 @@ export default function Intro() {
     return (
         <AnimatePresence mode="wait">
             {showIntro ? (
-                <motion.div className=" z-[99] w-full h-lvh max-w-[500px] max-h-[1080px] bg-black
+                <motion.div className=" z-[99] w-full h-lvh max-w-[500px] max-h-[1080px] bg-cover bg-no-repeat
               flex justify-center items-center overflow-hidden absolute duration-300 "
+              style={{backgroundImage: 'url(/image/hump_intro_bg.png)'}}
                     initial={false}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
                 >
-                    <div className="w-[30vmax] sm:w-[25vmax] aspect-[402/119] relative">
+                    <div className="w-[30vmax] sm:w-[25vmax] aspect-[356/125] relative">
                         <Image
-                            src="/image/ghibli_intro_logo.png"
+                            src="/image/hump_intro_logo.png"
                             alt="main logo"
                             layout="fill"
                             objectFit="cover"

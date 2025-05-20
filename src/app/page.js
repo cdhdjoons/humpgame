@@ -27,21 +27,21 @@ export default function Home() {
       <div className=" w-full h-full max-w-[500px] relative flex flex-col " >
         <Intro />
         <AnimatePresence mode="wait">
-          <motion.div className="w-full flex justify-center pt-1 relative "
+          <motion.div className="w-full flex justify-center relative "
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="w-[90%] max-w-[500px] px-[3%] flex flex-col items-start relative ">
-              <div className="w-[50vmin] sm:w-[40vmin] aspect-[353/99] relative">
+            <div className="w-full max-w-[500px] flex flex-col items-start relative ">
+              <div className="w-full aspect-[612/189] relative">
                 <Image
-                  src="/image/ghibli_title_logo.png"
+                  src="/image/hump_title_bg.png"
                   alt="main logo"
                   layout="fill"
                   objectFit="cover"
                 />
-                <p className="text-white absolute right-[5%] text-[3.5vmin] sm:text-[2.5vmin] xs:text-[4.5vmin]">Welcome</p>
+                <p className="text-white absolute left-[5%] top-[45%] -translate-y-[50%] text-[5.5vmin] sm:text-[4.5vmin] xs:text-[6.5vmin]">Welcome<br/><span className="text-[7.5vmin] sm:text-[5.5vmin]">Humpty Dumpty Ai</span></p>
               </div>
             </div>
 

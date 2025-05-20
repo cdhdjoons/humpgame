@@ -123,9 +123,14 @@ export default function ClaimTimer() {
     };
 
 
-    // 프로그레스 바 너비 계산 (0% ~ 100%)
+    // 프로그레스 바 너비 계산
+    const progressWidth = onClaim ? "251.2" : (1 - (TIMER_DURATION - time) / TIMER_DURATION) * 251.2;
 
-    const progressWidth = onClaim ? '0%' : `${((TIMER_DURATION - time) / TIMER_DURATION) * 100}%`;
+    // 작은 원의 위치 계산
+    const progress = 1 - parseFloat(progressWidth) / 251.2; // 0 (비어 있음) ~ 1 (꽉 참)
+    const angle = (progress * 360) * (Math.PI / 180); // 각도 (라디안), rotate-90 고려
+    const smallCircleX = 50 + 40 * Math.cos(angle); // x 좌표
+    const smallCircleY = 50 + 40 * Math.sin(angle); // y 좌표
 
     const activeClaim = () => {
         setOnClaim(true);
@@ -139,95 +144,11 @@ export default function ClaimTimer() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
             >
-                <div className="w-full h-[15%] flex justify-center items-center relative ">
-                    <div className="w-[90%] py-[5%] h-full sm:w-[90%] relative flex flex-col justify-between items-center rounded-[23px] bg-mainBoxBg">
-                        <div className="w-full flex justify-center gap-[10%] items-center  ">
-                            <p className="  text-[#E1FF41] text-[4.5vmin] sm:text-[2.5vmin] font-bold">Earn GHIB</p>
-                            <p className=" text-[#808080] text-[4.5vmin] sm:text-[2.5vmin] font-bold ">{formatTime(time)}</p>
-                        </div>
-                        <div className="w-full relative flex justify-center py-[2%] items-end ">
-                            <div className="w-[80%] h-[1vmin] xs:h-[0.8vmin] sm:h-[0.7vmin] rounded-3xl bg-[#787880] relative ">
-                                <div className="w-full bg-[#007AFF] rounded-3xl h-full absolute left-0" style={{ width: progressWidth }}></div>
-                                <div className="w-[4vmin] sm:w-[2.5vmin] aspect-[1/1] bg-white rounded-full absolute -top-[150%] xs:-top-[200%] sm:-top-[150%]" style={{ left: progressWidth }}></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="w-full h-[40%] flex justify-center items-center relative">
-                    <div className={` h-full w-[90%] px-[3%] py-[5%] rounded-[23px] flex flex-col gap-[2%] justify-between bg-no-repeat bg-cover`}
-                    style={{backgroundImage: 'url(/image/ghibli_claim_bg.png)'}}
-                    >
-                        <div className="w-full px-[3%] rounded-[23px] flex items-center relative ">
-                            <div className=" w-full flex justify-between z-10 ">
-                                <div className="w-full aspect-[353/99] relative  ">
-                                    <Image
-                                        src="/image/ghibli_title_logo.png"
-                                        alt="main logo"
-                                        layout="fill"
-                                        objectFit="cover"
-                                    />
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div className="w-full h-[20%] px-[3%] py-2 flex flex-col justify-center text-center items-center relative ">
-                            <p className="w-full text-white text-[4vmin] sm:text-[2.5vmin]">Where AI Meets Imagination</p>
-                            <p className="w-full text-white text-[3vmin] sm:text-[1.5vmin]">Earn points to start conversations with AI agents.</p>
-                        </div>
-                        <div className="w-full h-[15%] flex justify-center relative gap-[5%]  ">
-                            {onClaim ? <div onClick={startTimer} className="w-[45%] rounded-[24px] py-2  flex flex-col justify-center items-center relative bg-[#C9FF93] active:scale-90 transition-transform duration-100">
-                                <p className=" text-black text-[3.5vmin] sm:text-[1.5vmin] z-10">Claim now</p>
-                            </div> :
-                                <div className="w-[45%] rounded-[24px] py-2  flex flex-col justify-center items-center relative bg-[#C9FF93] active:scale-90 transition-transform duration-100">
-                                    <p className=" text-black text-[3.5vmin] sm:text-[1.5vmin] z-10">On Claim</p>
-                                </div>
-                            }
-
-                            <Link href="/daily" className="w-[45%] rounded-[24px] py-2 flex flex-col justify-center items-center relative bg-[#34FA9E] active:scale-90 transition-transform duration-100">
-                                <p className=" text-black text-[3.5vmin] sm:text-[1.5vmin]">Get Tickets</p>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-                <div className=" w-[90%] h-[15%] flex justify-between  ">
-                    <div className=" py-2 bg-mainBoxBg rounded-[23px] w-[47%] flex flex-col justify-center items-center relative">
-                        <div className=" w-full flex justify-center gap-[10%]">
-                            <div className="w-[8vmin] sm:w-[6vmin] aspect-[98/101] relative  ">
-                                <Image
-                                    src="/image/ghibli_game.png"
-                                    alt="main logo"
-                                    layout="fill"
-                                    objectFit="cover"
-                                />
-                            </div>
-                            <p className={` text-white text-[5vmin] sm:text-[3vmin] font-bold
-               mt-1 `}>{n2o >= 1000000 ? `${n2o / 1000000}m` : n2o >= 1000 ? `${n2o / 1000}k` : n2o}</p>
-                        </div>
-                        <p className=" w-full py-[2%] mt-[4%] text-center text-white text-[3.8vmin] xs:text-[4.5vmin] sm:text-[2.3vmin]
-                        active:scale-90 transition-transform duration-200">Your GHIB Point</p>
-                    </div>
-                    <div className=" py-2 bg-mainBoxBg rounded-[23px] w-[47%] flex flex-col justify-center items-center relative">
-                        <div className=" w-full flex justify-center gap-[10%]">
-                            <div className="w-[9vmin] sm:w-[7vmin] aspect-[90/72] relative  ">
-                                <Image
-                                    src="/image/ghabli_ticket_icon.png"
-                                    alt="main logo"
-                                    layout="fill"
-                                    objectFit="cover"
-                                />
-                            </div>
-                            <p className={` text-white text-[5vmin] sm:text-[3vmin] font-bold `}>{tickets}</p>
-                        </div>
-                        <p className=" w-full py-[2%] mt-[4%] text-center text-white text-[3.8vmin] xs:text-[4.5vmin] sm:text-[2.3vmin]
-                        active:scale-90 transition-transform duration-200">Your Tickets</p>
-                    </div>
-                </div>
                 <div className="  w-[90%] h-[13%] flex flex-col gap-[5%] justify-evenly items-center relative">
-                    <div className="w-full text-white text-[4vmin] sm:text-[2vmin]">Join Our community</div>
-                    <a href="https://x.com/Ghibli_AI_" target="_blank" rel="noopener noreferrer" className="bg-white rounded-[30px] flex justify-between items-center w-full py-[1%] px-4">
+                    <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className="bg-white rounded-[30px] flex justify-between items-center w-full py-[1%] px-4">
                         <div className="w-[8vmin] sm:w-[5vmin] aspect-[60/60] relative  ">
                             <Image
-                                src="/image/sagu_x_icon.png"
+                                src="/image/hump_x_icon.svg"
                                 alt="main logo"
                                 layout="fill"
                                 objectFit="cover"
@@ -237,6 +158,165 @@ export default function ClaimTimer() {
                         <p className="text-black h-full opacity-60">...</p>
                     </a>
                 </div>
+                <div className=" w-[90%] h-[20%] flex flex-col justify-between ">
+                    <div className=" py-2 bg-mainBoxBg rounded-[23px] w-full flex justify-center items-center relative">
+                        <div className=" w-full flex justify-evenly gap-[10%]  ">
+                            <div className="w-[10vmin] sm:w-[6vmin] aspect-[72/74] relative  ">
+                                <Image
+                                    src="/image/hump_game.png"
+                                    alt="main logo"
+                                    layout="fill"
+                                    objectFit="cover"
+                                />
+                            </div>
+                            <p className={` text-white text-[5vmin] sm:text-[3vmin] font-bold mt-1 `}>MY HUMP Point</p>
+                        </div>
+                        <p className=" w-[50%]  py-[2%] text-center text-[#FFCC00] text-[5.5vmin] sm:text-[3.5vmin]
+                        active:scale-90 transition-transform duration-200">{n2o >= 1000000 ? `${n2o / 1000000}m` : n2o >= 1000 ? `${n2o / 1000}k` : n2o}</p>
+                    </div>
+                    <div className=" py-2 bg-mainBoxBg rounded-[23px] w-full flex justify-center items-center relative">
+                        <div className=" w-full flex justify-evenly items-center gap-[10%] ">
+                            <div className="w-[10vmin] sm:w-[7vmin] aspect-[72/74] relative  ">
+                                <Image
+                                    src="/image/hump_ticket_icon.png"
+                                    alt="main logo"
+                                    layout="fill"
+                                    objectFit="cover"
+                                />
+                            </div>
+                            <p className={` text-white text-[5vmin] sm:text-[3vmin] font-bold `}>My Tickets</p>
+                        </div>
+                        <p className=" w-[50%] py-[2%] text-center text-[#FFCC00] text-[5.5vmin] sm:text-[3.5vmin]
+                        active:scale-90 transition-transform duration-200">{tickets}</p>
+                    </div>
+                </div>
+                <div className="w-full h-[40%] flex justify-center items-center relative">
+                    <div className="w-full h-full flex justify-center items-center ">
+                        <div className=" h-full aspect-[264/264] relative active:scale-90 transition-transform duration-200">
+                            {/* <Image
+                                src="/image/pdb_rankcircle_border.png"
+                                alt="main logo"
+                                layout="fill"
+                                objectFit="fill"
+                                className="z-[90]"
+                            /> */}
+                            <svg
+                                className="absolute left-[50%] top-[50%] p-[4%] -translate-y-[50%] -translate-x-[50%] w-[115%] transform rotate-90" // 6시 방향부터 시작하도록 회전
+                                viewBox="0 0 100 100"
+                            >
+                                <defs>
+                                    <linearGradient id="gradientColors" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stopColor="#FDC038" />
+                                        <stop offset="50%" stopColor="#FDC038" />
+                                        <stop offset="100%" stopColor="#FDC038" />
+                                    </linearGradient>
+                                    {/* 작은 원용 패턴 정의 */}
+                                    <pattern id="smallCirclePattern" x="0" y="0" width="100%" height="100%" patternUnits="objectBoundingBox">
+                                        <image
+                                            href="/image/hump_game.png"
+                                            x="-10"
+                                            y="-0"
+                                            width="15"
+                                            height="15"
+                                            preserveAspectRatio="xMidYMid slice"
+                                            transform="rotate(270 3 3)"
+                                        />
+                                    </pattern>
+                                </defs>
+                                {/* 배경 원 */}
+                                <circle
+                                    cx="50"
+                                    cy="50"
+                                    r="40"
+                                    stroke="black"
+                                    strokeWidth="5"
+                                    fill="none"
+                                />
+                                {/* 진행 원 */}
+                                <circle
+                                    cx="50"
+                                    cy="50"
+                                    r="40"
+                                    stroke="url(#gradientColors)"
+                                    strokeWidth="5"
+                                    fill="none"
+                                    strokeDasharray="251.2"
+                                    strokeDashoffset={progressWidth}
+                                    strokeLinecap="round"
+                                    className="transition-all duration-1000"
+                                />
+                                {/* 작은 원 */}
+                                {/* <circle
+                                    cx={smallCircleX}
+                                    cy={smallCircleY}
+                                    r="5" // 작은 원의 반지름
+                                    fill="#FFFFFF" // 진행 원과 같은 색상
+                                    className="transition-all duration-1000"
+                                /> */}
+                            </svg>
+                            <svg
+                                className="absolute left-[50%] top-[50%] p-[4%] -translate-y-[50%] -translate-x-[50%] w-[115%] transform rotate-90 z-[100]"
+                                viewBox="0 0 100 100"
+                            >
+                                <circle
+                                    cx={smallCircleX}
+                                    cy={smallCircleY}
+                                    r="9"
+                                    fill="url(#smallCirclePattern)"
+                                    className="transition-all duration-1000"
+                                />
+                            </svg>
+                            <div className=" absolute left-[50%] top-[50%] p-[4%] -translate-y-[50%] -translate-x-[50%] w-[90%] h-[90%] rounded-full ">
+                                <div className="w-full flex justify-center items-center aspect-[1/1] relative rounded-full bg-cover bg-no-repeat " style={{ backgroundImage: 'url(/image/hump_circle_bg.png)' }}>
+                                    {onClaim ? <div className="w-[50%] relative aspect-[122/197]">
+                                        <Image
+                                            src="/image/hump_stay.png"
+                                            alt="main logo"
+                                            layout="fill"
+                                            objectFit="fill"
+                                            className=" rounded-full"
+                                        />
+                                    </div> :
+                                        <div className="w-full relative aspect-[1/1]">
+                                            <Image
+                                                src="/image/hump_run.gif"
+                                                alt="main logo"
+                                                layout="fill"
+                                                objectFit="fill"
+                                                className=" rounded-full"
+                                            />
+                                        </div>}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="w-full h-[15%] flex justify-center items-center relative ">
+                    <div className="w-[90%] py-[5%] px-[3%] h-full sm:w-[90%] relative flex justify-between items-center rounded-[23px] bg-mainBoxBg">
+                        <div className="w-[70%] flex justify-center gap-[5%] items-center  ">
+                            <p className="  text-[#E55E00] text-[4.5vmin] sm:text-[2.5vmin] font-bold">Earn 2,000 HUMP</p>
+                            <p className=" text-[#808080] text-[4.5vmin] sm:text-[2.5vmin] font-bold ">{formatTime(time)}</p>
+                        </div>
+                        {/* <div className="w-full relative flex justify-center py-[2%] items-end ">
+                            <div className="w-[80%] h-[1vmin] xs:h-[0.8vmin] sm:h-[0.7vmin] rounded-3xl bg-[#787880] relative ">
+                                <div className="w-full bg-[#007AFF] rounded-3xl h-full absolute left-0" style={{ width: progressWidth }}></div>
+                                <div className="w-[4vmin] sm:w-[2.5vmin] aspect-[1/1] bg-white rounded-full absolute -top-[150%] xs:-top-[200%] sm:-top-[150%]" style={{ left: progressWidth }}></div>
+                            </div>
+                        </div> */}
+                        <div className="w-[30%] flex justify-center relative  ">
+                            {onClaim ? <div onClick={startTimer} className="w-full rounded-[24px] py-2  flex flex-col justify-center items-center relative bg-[#F7AD2A] active:scale-90 transition-transform duration-100">
+                                <p className=" text-black text-[3.5vmin] sm:text-[1.5vmin] z-10">Earn Start</p>
+                            </div> :
+                                <div className="w-full rounded-[24px] py-2  flex flex-col justify-center items-center relative bg-[#282828] active:scale-90 transition-transform duration-100">
+                                    <p className=" text-white text-[3.5vmin] sm:text-[1.5vmin] z-10">On Start</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+
             </motion.div>
         </AnimatePresence>
     );
