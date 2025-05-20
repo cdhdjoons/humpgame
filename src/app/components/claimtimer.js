@@ -245,17 +245,10 @@ export default function ClaimTimer() {
                                     strokeLinecap="round"
                                     className="transition-all duration-1000"
                                 />
-                                {/* 작은 원 */}
-                                {/* <circle
-                                    cx={smallCircleX}
-                                    cy={smallCircleY}
-                                    r="5" // 작은 원의 반지름
-                                    fill="#FFFFFF" // 진행 원과 같은 색상
-                                    className="transition-all duration-1000"
-                                /> */}
                             </svg>
+                            {/* 작은 원 */}
                             <svg
-                                className="absolute left-[50%] top-[50%] p-[4%] -translate-y-[50%] -translate-x-[50%] w-[115%] transform rotate-90 z-[100]"
+                                className="absolute left-[50%] top-[50%] p-[4%] -translate-y-[50%] -translate-x-[50%] w-[115%] transform rotate-90 z-[90]"
                                 viewBox="0 0 100 100"
                             >
                                 <circle
