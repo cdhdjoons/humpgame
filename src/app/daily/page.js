@@ -7,6 +7,9 @@ import { useRouter } from "next/navigation";
 import Wallet from "../components/wallet";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
 import Tickets from "../components/tickets";
+import { Inter } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] })
 
 export default function DailyTask() {
     const router = useRouter(); // useRouter로 router 객체 가져오기
@@ -100,54 +103,53 @@ export default function DailyTask() {
     return (
         <TonConnectUIProvider manifestUrl={manifestUrl}>
             <AnimatePresence mode="wait">
-                <motion.div className={` w-full h-full flex flex-col justify-evenly items-center overflow-scroll`}
+                <motion.div className={` w-full h-full flex flex-col justify-start items-center overflow-scroll`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
                 >
-                    <div className="w-[90%] h-[30%] px-[3%] py-[1%] flex flex-col justify-between items-start ">
-                        <div className="w-[90%] max-w-[500px] px-[3%] flex flex-col items-start relative ">
-                            <div className="w-[50vmin] sm:w-[40vmin] aspect-[353/99] relative">
+                    <div className="w-full h-[40%] flex flex-col justify-between items-start ">
+                        <div className="w-full max-w-[500px] flex flex-col items-start relative ">
+                            <div className="w-full aspect-[612/189] relative">
                                 <Image
-                                    src="/image/ghibli_title_logo.png"
+                                    src="/image/hump_title_bg.png"
                                     alt="main logo"
                                     layout="fill"
                                     objectFit="cover"
                                 />
-                                <p className="text-white absolute right-[5%] text-[3.5vmin] sm:text-[2.5vmin] xs:text-[4.5vmin]">Task Center</p>
+                                <p className="text-white absolute left-[5%] top-[45%] -translate-y-[50%] text-[5.5vmin] sm:text-[4.5vmin] xs:text-[6.5vmin]">Egg Earn<br /><span className="text-[7.5vmin] sm:text-[5.5vmin]">Humpty Dumpty Ai</span></p>
                             </div>
                         </div>
-                        <div className=" w-full flex flex-col ">
-                            <p className="text-white text-[3vmin] sm:text-[2vmin] xs:text-[4.5vmin]"><span className="font-bold">Use your GHIB to get a Creation Ticket!<br /></span>
-                            With a ticket in hand, you’ll unlock access to our AI-powered image generation tool, create stunning, dreamlike scenes inspired by your imagination.</p>
+                        <div className=" w-full flex flex-col px-[3%] py-[1%]">
+                            <p className="text-white text-center text-[4vmin] sm:text-[3vmin]"><span className="font-bold text-[5vmin]">Use  HUMP to purchase a participation AI PASS.<br /></span>
+                                Once you hold a ticket, you can submit your Story and start earning rewards based on your contribution.</p>
                         </div>
-
                         <Tickets />
                     </div>
-                    <div className=" w-full h-[60%] px-[2%]  flex flex-col items-center " >
+                    <div className=" w-full h-[60%] px-[2%]  flex flex-col items-center  " >
                         <div className=" w-full h-full flex flex-col justify-evenly items-center relative gap-2">
                             {/* <p className=" text-[1.5vmax] sm:text-[1.3vmax] text-[#00FF08] font-bold">{remainHours}/24h</p> */}
                             <div className=" w-[90%] relative flex justify-between items-center">
-                                <div className=" w-[13vmin] sm:w-[7vmin] aspect-[98/101] relative ">
+                                <div className=" w-[15vmin] sm:w-[9vmin] aspect-[80/79] relative ">
                                     <Image
-                                        src="/image/ghibli_game.png"
+                                        src="/image/hump_daily_icon.png"
                                         alt="meatIcon"
                                         layout="fill"
                                         objectFit="cover"
                                     />
                                 </div>
-                                <div className=" flex flex-col items-start w-[55%] ">
+                                <div className={`flex flex-col items-start w-[55%] ${inter.className}`} >
                                     <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-white">Daily Task</p>
                                     <p className=" text-[1.5vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">Earn Every day</p>
                                 </div>
-                                <p className=" w-[20%] text-center font-bold text-[#66B6FF] text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] ">+</p>
+                                <p className=" w-[20%] text-center font-bold text-[#66B6FF] text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] "></p>
                             </div>
                             <div className=" w-[90%] px-[5%] flex flex-col justify-center items-center bg-white rounded-[23px]">
-                                <div className=" w-full flex justify-between items-center border-b-[0.5px] border-b-black py-[2%]">
-                                    <div className=" w-[12vmin] sm:w-[6vmin] aspect-[98/101] relative ">
+                                <div className=" w-full flex justify-between items-center border-b-[0.5px] border-b-black py-[1%]">
+                                    <div className=" w-[12vmin] sm:w-[6vmin] aspect-[72/74] relative ">
                                         <Image
-                                            src="/image/ghibli_game.png"
+                                            src="/image/hump_game.png"
                                             alt="meatIcon"
                                             layout="fill"
                                             objectFit="cover"
@@ -155,16 +157,16 @@ export default function DailyTask() {
                                     </div>
                                     <div className=" flex flex-col items-start w-[55%] ">
                                         <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-black">Daily Reward</p>
-                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">100 GHIB</p>
+                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">100 HUMP</p>
                                     </div>
                                     <div className={` w-[20%] bg-[#767DFF] h-[50%] rounded-3xl relative duration-300 transition-all ${disabledDaily[0] ? 'opacity-100' : 'opacity-20'}`}>
                                         <div onClick={() => dailyHandleClick(0, 100)} className={`w-[40%] duration-300 aspect-[1/1] transition-all rounded-full bg-white absolute top-[50%] -translate-y-[50%] ${disabledDaily[0] ? "-translate-x-[100%] left-full" : "translate-x-0 left-0"}`}></div>
                                     </div>
                                 </div>
                                 <div className=" w-full flex justify-between items-center py-[2%] ">
-                                    <div className=" w-[12vmin] sm:w-[6vmin] aspect-[98/101] relative ">
+                                    <div className=" w-[12vmin] sm:w-[6vmin] aspect-[72/74] relative ">
                                         <Image
-                                            src="/image/ghibli_game.png"
+                                            src="/image/hump_game.png"
                                             alt="meatIcon"
                                             layout="fill"
                                             objectFit="cover"
@@ -172,7 +174,7 @@ export default function DailyTask() {
                                     </div>
                                     <div className=" flex flex-col items-start w-[55%] ">
                                         <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-black">RT our Post</p>
-                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">1 GHIB</p>
+                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">1 HUMP</p>
                                     </div>
                                     <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className={` w-[20%] bg-[#767DFF] h-[50%] rounded-3xl relative duration-300 transition-all ${disabledDaily[1] ? 'opacity-100' : 'opacity-20'}`}>
                                         <div onClick={() => dailyHandleClick(1, 1000)} className={`w-[40%] duration-300 aspect-[1/1] transition-all rounded-full bg-white absolute top-[50%] -translate-y-[50%] ${disabledDaily[1] ? "-translate-x-[100%] left-full" : "translate-x-0 left-0"}`}></div>
@@ -181,25 +183,25 @@ export default function DailyTask() {
                             </div>
 
                             <div className=" w-[90%] relative flex justify-between items-center">
-                                <div className=" w-[14vmin] sm:w-[8vmin] aspect-[98/101] relative ">
+                                <div className=" w-[15vmin] sm:w-[9vmin] aspect-[80/79] relative ">
                                     <Image
-                                        src="/image/ghibli_game.png"
+                                        src="/image/hump_daily_icon.png"
                                         alt="meatIcon"
                                         layout="fill"
                                         objectFit="cover"
                                     />
                                 </div>
-                                <div className=" flex flex-col items-start w-[55%] ">
+                                <div className={`flex flex-col items-start w-[55%] ${inter.className}`} >
                                     <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-white">Option Task</p>
 
                                 </div>
-                                <p className=" w-[20%] text-center font-bold text-[#66B6FF] text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] ">+</p>
+                                <p className=" w-[20%] text-center font-bold text-[#66B6FF] text-[2.5vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] "></p>
                             </div>
                             <div className=" w-[90%] px-[5%] flex flex-col justify-center items-center bg-white rounded-[23px]">
-                                <div className=" w-full flex justify-between items-center border-b-[0.5px] border-b-black py-[2%]">
-                                    <div className=" w-[12vmin] sm:w-[6vmin] aspect-[98/101] relative ">
+                                <div className=" w-full flex justify-between items-center border-b-[0.5px] border-b-black py-[1%]">
+                                    <div className=" w-[12vmin] sm:w-[6vmin] aspect-[72/74] relative ">
                                         <Image
-                                            src="/image/ghibli_game.png"
+                                            src="/image/hump_game.png"
                                             alt="meatIcon"
                                             layout="fill"
                                             objectFit="cover"
@@ -207,16 +209,16 @@ export default function DailyTask() {
                                     </div>
                                     <div className=" flex flex-col items-start w-[55%] ">
                                         <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-black">Follow X</p>
-                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">1K GHIB</p>
+                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">1K HUMP</p>
                                     </div>
                                     <a href="https://x.com/" target="_blank" rel="noopener noreferrer" className={` w-[20%] bg-[#767DFF] h-[50%] rounded-3xl relative duration-300 transition-all ${disabledTask[0] ? 'opacity-100' : 'opacity-20'}`}>
                                         <div onClick={() => handleClick(0, 1000)} className={`w-[40%] duration-300 aspect-[1/1] transition-all rounded-full bg-white absolute top-[50%] -translate-y-[50%] ${disabledTask[0] ? "-translate-x-[100%] left-full" : "translate-x-0 left-0"}`}></div>
                                     </a>
                                 </div>
                                 <div className=" w-full flex justify-between items-center py-[2%] ">
-                                    <div className=" w-[12vmin] sm:w-[6vmin] aspect-[98/101] relative ">
+                                    <div className=" w-[12vmin] sm:w-[6vmin] aspect-[72/74] relative ">
                                         <Image
-                                            src="/image/ghibli_game.png"
+                                            src="/image/hump_game.png"
                                             alt="meatIcon"
                                             layout="fill"
                                             objectFit="cover"
@@ -224,7 +226,7 @@ export default function DailyTask() {
                                     </div>
                                     <div className=" flex flex-col items-start w-[55%] ">
                                         <p className=" text-[2.1vmax] xs:text-[2.3vmax] sm:text-[2.2vmin] font-bold text-black">Invite 5 users</p>
-                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">5k GHIB | {inviteCount}/5users</p>
+                                        <p className=" text-[1.8vmax] xs:text-[1.5vmax] sm:text-[1.9vmin] text-[#C0C0C0]">5k HUMP | {inviteCount}/5users</p>
                                     </div>
                                     <div className={` w-[20%] bg-[#767DFF] h-[50%] rounded-3xl relative duration-300 transition-all ${disabledTask[1] ? 'opacity-100' : 'opacity-20'}`}>
                                         <div onClick={() => handleClick(1, 5000)} className={`w-[40%] duration-300 aspect-[1/1] transition-all rounded-full bg-white absolute top-[50%] -translate-y-[50%] ${disabledTask[1] ? "-translate-x-[100%] left-full" : "translate-x-0 left-0"}`}></div>

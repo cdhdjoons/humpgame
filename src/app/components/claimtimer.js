@@ -158,8 +158,8 @@ export default function ClaimTimer() {
                         <p className="text-black h-full opacity-60">...</p>
                     </a>
                 </div>
-                <div className=" w-[90%] h-[20%] flex flex-col justify-between ">
-                    <div className=" py-2 bg-mainBoxBg rounded-[23px] w-full flex justify-center items-center relative">
+                <div className=" w-[90%] h-[30%] flex flex-col justify-evenly ">
+                    <div className=" py-[2.5%] bg-mainBoxBg rounded-[23px] w-full flex justify-center items-center relative">
                         <div className=" w-full flex justify-evenly gap-[10%]  ">
                             <div className="w-[10vmin] sm:w-[6vmin] aspect-[72/74] relative  ">
                                 <Image
@@ -174,7 +174,7 @@ export default function ClaimTimer() {
                         <p className=" w-[50%]  py-[2%] text-center text-[#FFCC00] text-[5.5vmin] sm:text-[3.5vmin]
                         active:scale-90 transition-transform duration-200">{n2o >= 1000000 ? `${n2o / 1000000}m` : n2o >= 1000 ? `${n2o / 1000}k` : n2o}</p>
                     </div>
-                    <div className=" py-2 bg-mainBoxBg rounded-[23px] w-full flex justify-center items-center relative">
+                    <div className=" py-[2.5%] bg-mainBoxBg rounded-[23px] w-full flex justify-center items-center relative">
                         <div className=" w-full flex justify-evenly items-center gap-[10%] ">
                             <div className="w-[10vmin] sm:w-[7vmin] aspect-[72/74] relative  ">
                                 <Image
@@ -190,7 +190,7 @@ export default function ClaimTimer() {
                         active:scale-90 transition-transform duration-200">{tickets}</p>
                     </div>
                 </div>
-                <div className="w-full h-[40%] flex justify-center items-center relative">
+                <div className="w-full h-[40%] pb-[1%] flex justify-center items-center relative ">
                     <div className="w-full h-full flex justify-center items-center ">
                         <div className=" h-full aspect-[264/264] relative active:scale-90 transition-transform duration-200">
                             {/* <Image
@@ -261,7 +261,7 @@ export default function ClaimTimer() {
                             </svg>
                             <div className=" absolute left-[50%] top-[50%] p-[4%] -translate-y-[50%] -translate-x-[50%] w-[90%] h-[90%] rounded-full ">
                                 <div className="w-full flex justify-center items-center aspect-[1/1] relative rounded-full bg-cover bg-no-repeat " style={{ backgroundImage: 'url(/image/hump_circle_bg.png)' }}>
-                                    {onClaim ? <div className="w-[50%] relative aspect-[122/197]">
+                                    {onClaim ? <div className="w-[50%] relative aspect-[122/197] duration-500">
                                         <Image
                                             src="/image/hump_stay.png"
                                             alt="main logo"
@@ -270,7 +270,7 @@ export default function ClaimTimer() {
                                             className=" rounded-full"
                                         />
                                     </div> :
-                                        <div className="w-full relative aspect-[1/1]">
+                                        <div className="w-full relative aspect-[1/1] duration-500">
                                             <Image
                                                 src="/image/hump_run.gif"
                                                 alt="main logo"
@@ -284,7 +284,7 @@ export default function ClaimTimer() {
                         </div>
                     </div>
                 </div>
-                <div className="w-full h-[15%] flex justify-center items-center relative ">
+                <div className="w-full h-[13%] flex justify-center items-center relative ">
                     <div className="w-[90%] py-[5%] px-[3%] h-full sm:w-[90%] relative flex justify-between items-center rounded-[23px] bg-mainBoxBg">
                         <div className="w-[70%] flex justify-center gap-[5%] items-center  ">
                             <p className="  text-[#E55E00] text-[4.5vmin] sm:text-[2.5vmin] font-bold">Earn 2,000 HUMP</p>

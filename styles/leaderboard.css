@@ -8,14 +8,14 @@
 
 /* 스크롤바의 배경 */
 .scroll-container::-webkit-scrollbar-track {
-  background: linear-gradient(to bottom, #F5C150, #DE85A1, #7E8FF4);
+  background: linear-gradient(to bottom, #ffffff, #ffffff, #ffffff);
   border-radius: 5px;
 }
 
 /* 스크롤바의 핸들 */
 /* 스크롤에 그라데이션 넣기*/
 .scroll-container::-webkit-scrollbar-thumb {
-background: white;
+background: black;
 border-radius: 5px;
 border: 2px solid transparent; 
 background-clip: padding-box, border-box;
