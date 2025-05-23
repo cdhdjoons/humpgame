@@ -154,7 +154,7 @@ export default function ClaimTimer() {
                                 objectFit="cover"
                             />
                         </div>
-                        <p className="text-black text-[4vmin] sm:text-[2vmin]">Join our X , earn GHIB Point</p>
+                        <p className="text-black text-[4vmin] sm:text-[2vmin]">Join our X , earn HUMP Point</p>
                         <p className="text-black h-full opacity-60">...</p>
                     </a>
                 </div>
